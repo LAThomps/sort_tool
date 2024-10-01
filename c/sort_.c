@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -247,6 +246,9 @@ int main(int argc, char *argv[]) {
             }
             if (strcmp(argv[i], "quick") == 0) {
                 sort_type = "quick";
+            }
+            if (strcmp(argv[i], "merge") == 0) {
+                sort_type = "merge";
             }
         }
     }
