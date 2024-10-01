@@ -323,5 +323,6 @@ int main(int argc, char *argv[]) {
             j--;
         }
     }
+    // print final sorted array
     printArray(final_words, final_count);
 }
