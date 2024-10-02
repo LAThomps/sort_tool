@@ -1,8 +1,24 @@
 #!/usr/bin/python3
 
+"""
+This is a python module to implement the UNIX `sort` tool. 
+
+My main goal of this project was to simply learn a compiled language.
+I ended up going with C as you can see in the repo directory, so I
+wrote this program first. Since python is my bread and butter, I wrote
+this module much more quickly than I could have in C and used it as kind
+of a road map for that side of the project. 
+
+This module performs a quick, merge, heap, or radix sort on all the 
+words in any .txt file that you pass, can assign a random value to 
+each word for sorting, can sort only unique words, and can return
+the words in descending order if requested.
+"""
+
 import argparse
 import re
 import sys
+import os
 from copy import deepcopy as dcopy
 from itertools import chain
 from typing import Literal
@@ -405,6 +421,15 @@ def main():
     # read in arguments
     parser = create_parser()
     args = parser.parse_args()
+
+    # assert workable filename
+    error_str = f"""
+        '{args.filename}' either doesn't exsist or is not a .txt file
+        you're currently in the {os.getcwd()} working directory
+    """
+    condition_1 = os.path.isfile(args.filename)
+    condition_2 = args.filename.split(".")[-1] == "txt"
+    assert condition_1 and condition_2, error_str
 
     # ingest text file, create helper variables based on args
     ingest = preprocess(
