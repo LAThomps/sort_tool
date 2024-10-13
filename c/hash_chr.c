@@ -1,3 +1,32 @@
+/*
+This script provides a hash table data structure for arrays of strings
+(character arrays if you want to be specific).
+
+The structs are defined in hash_chr.h
+
+The hash_table struct consists of an integer denoting the total number
+of available slots, a running total integer counting the number of 
+entries in the table, the pointer array for the actual hash_entries,
+and an integer array keeping track of the exact indicies being used 
+by the entries (this array also allows the table to be iterated through
+and will return the words in the order they were input).
+
+The hash_entry struct consists of a pointer to the character array
+stored for that entry, and an integer denoting the number of times 
+that slot in the hash table had been visited upon insert. The 
+`visits` integer is what tells the hash_find function whether or not
+it needs to keep looking for a certain value (if a user tries to find
+a word that's not in the table, the hash_find function traverses the 
+table until an entry with 0 visists is encountered, which case the 
+function will return -1 for a word not found.
+
+The algorithm for inserting values is as the README specifies.
+
+Removing an entry sets the pointer to the entry to NULL, and follows
+the same path that word would have followed on insert.
+
+A destroy function is provided to free up memory after use.
+*/
 #include "hash_chr.h"
 
 // initialize hash table

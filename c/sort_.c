@@ -1,3 +1,24 @@
+/*
+This is the main file for the sort tool. It contains numerous helper functions
+to read in a .txt file, copy character arrays safely, and the actual sorting
+algorithms the user requests. 
+
+This is the general workflow of the main function:
+    - Parse the arguments passed
+    - Read in every word in the .txt file passed
+    - hash the unique words to sort if specified
+    - sort those words by the chosen algorithm
+    - print the sorted words to the console in ascending order (or descending)
+
+The hash table data structure is written in hash_chr.c and must be compiled
+with this file to provide the hash table functionality.
+
+This was my very first time ever programming in C so very open to any and 
+all feedback! I'm a python developer by trade and wanted to learn a compiled
+language, so I chose to start with C due to the easy portability into python
+and to see what's required to make python performant!
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
